@@ -1,5 +1,5 @@
 #  State AI Governance Legislation Tracker
-#### Video Demo:  <URL https://youtu.be/LeQFUJsinbU>
+
 #### Description:
 
 This State AI Governance Legislation Tracker is a web application designed to monitor and provide easy access to information about artificial intelligence (AI) governance legislation across different states in the United States. I work as a law school professor who co-direct's the Vanderbilt AI Law Lab and I wanted to expirement with designing a tool that could help policymakers, researchers, and the public to stay informed about the evolving landscape of AI regulation at the state level. It is a small list now but I hope to be able to build on it in the future.
