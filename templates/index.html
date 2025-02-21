@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAILL's State AI Governance Legislation Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/vaill_logo.png') }}" alt="VAILL Logo" class="logo">
+        </div>
+        <h1>VAILL's State AI Governance Legislation Tracker</h1>
+    </header>
+
+
+
+
+    <form action="{{ url_for('search') }}" method="get">
+        <input type="text" name="state" placeholder="Search by state" value="{{ state }}">
+        <input type="text" name="bill_number" placeholder="Search by bill number" value="{{ bill_number }}">
+        <input type="text" name="summary" placeholder="Search in summary" value="{{ summary }}">
+        <select name="status">
+            <option value="">All Statuses</option>
+            {% for status_option in all_statuses %}
+                <option value="{{ status_option }}" {% if status == status_option %}selected{% endif %}>{{ status_option }}</option>
+            {% endfor %}
+        </select>
+        <div class="button-group">
+            <input type="submit" value="Search">
+            <a href="{{ url_for('search') }}" class="clear-button">Clear</a>
+        </div>
+    </form>
+    <div class="info-box">
+        <p>Our tracker categorizes legislation based on various types of provisions.
+        <a href="{{ url_for('provisions') }}">Learn more about these categories</a>.</p>
+    </div>
+    <div class="stats-container">
+        <div class="stats-box search-results">
+            <h2>Search Results</h2>
+            <p>Showing {{ total_bills }} result{% if total_bills != 1 %}s{% endif %}</p>
+        </div>
+        <div class="stats-box database-stats">
+            <h2>Database Statistics</h2>
+            <p>Number of states: {{ states }}</p>
+        </div>
+        <div class="stats-box bill-statuses">
+            <h2>Bill Statuses</h2>
+            <ul>
+            {% for status, count in statuses.items() %}
+                <li><span class="status-name">{{ status }}:</span> <span class="status-count">{{ count }}</span></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="legislation-data">
+        <h2>Legislation Data</h2>
+        {% if legislation %}
+            <table>
+                <tr>
+                    <th>State</th>
+                    <th>Bill Number</th>
+                    <th>Scope</th>
+                    <th>Key Provisions</th>
+                    <th>Summary</th>
+                    <th>Status</th>
+                </tr>
+                {% for law in legislation %}
+                <tr>
+                    <td>{{ law['state'] }}</td>
+                    <td>{{ law['bill_number'] }}</td>
+                    <td>{{ law['scope'] }}</td>
+                    <td>{{ law['key_provisions'] }}</td>
+                    <td>{{ law['summary'] }}</td>
+                    <td>{{ law['status'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
