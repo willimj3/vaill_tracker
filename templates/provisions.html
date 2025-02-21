@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of State Law Provisions - VAILL's State AI Governance Legislation Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/vaill_logo.png') }}" alt="VAILL Logo" class="logo">
+        </div>
+        <h1>VAILL's State AI Governance Legislation Tracker</h1>
+    </header>
+
+    <nav>
+        <a href="{{ url_for('search') }}">Home</a>
+    </nav>
+
+    <main class="provisions-container">
+        <h2>Types of State Law Provisions</h2>
+
+        <div class="provision">
+            <h3>AI governance program and documentation</h3>
+            <p>Includes requirements for policies, procedures, or a robust governance or risk-management program and retention of internal assessment and mitigation documentation.</p>
+        </div>
+
+        <div class="provision">
+            <h3>Assessments</h3>
+            <p>Includes requirements to conduct risk assessments, impact assessments or rights assessments.</p>
+        </div>
+
+        <div class="provision">
+            <h3>Training</h3>
+            <p>Includes requirements for training staff about AI governance practices and procedures.</p>
+        </div>
+
+        <!-- Add the rest of the provisions here, following the same structure -->
+
+    </main>
+</body>
+</html>
